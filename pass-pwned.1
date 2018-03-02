@@ -1,0 +1,35 @@
+.TH PASS-PWNED 1 "2018 March 1" "Password Store - Pwned extension"
+
+.SH NAME
+pass-pwned - A \fBpass\fP(1) extension for checking passwords against pwnedpasswords API.
+
+.SH SYNOPSIS
+.B pass pwned
+[
+.I COMMAND
+] [
+.I OPTIONS
+]... [
+.I ARGS
+]...
+
+.SH DESCRIPTION
+.B pass-pwned
+is an extension for Password Store that will check a password against Troy Hunt's pwnedpasswords API.
+
+.SH COMMANDS
+
+.TP
+\fBcheck\fP \fIpass-name\fP
+
+Check the contents of \fIpass-name\fP against pwnedpasswords API. For a multiline passfile the first line will be used. 
+
+.SH SEE ALSO
+.BR pass (1),
+
+.SH AUTHORS
+.B pass-pwned
+was written by
+.MT myself@james-ridgway.co.uk
+James Ridgway
+.ME .
