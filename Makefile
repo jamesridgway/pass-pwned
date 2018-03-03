@@ -26,7 +26,10 @@ uninstall:
 		"$(DESTDIR)$(SYSTEM_EXTENSION_DIR)/$(PROG).bash" \
 		"$(DESTDIR)$(MANDIR)/man1/pass-$(PROG).1"
 
+test:
+	make -C tests
+
 lint:
 	@shellcheck -s bash $(PROG).bash
 
-.PHONY: install uninstall lint
+.PHONY: install uninstall test lint

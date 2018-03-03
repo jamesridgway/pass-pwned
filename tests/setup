@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Project directory
+TEST_HOME="$(pwd)"
+EXT_HOME="$(dirname "$TEST_HOME")"
+
+
+# Test dependencies
+source ./sharness.sh
+
+export TMP="/tmp/pass-pwned"
+
+#  Prepare pass config vars
+unset PASSWORD_STORE_DIR
+unset PASSWORD_STORE_KEY
+unset PASSWORD_STORE_GIT
+unset PASSWORD_STORE_GPG_OPTS
+unset PASSWORD_STORE_X_SELECTION
+unset PASSWORD_STORE_CLIP_TIME
+unset PASSWORD_STORE_UMASK
+unset PASSWORD_STORE_GENERATED_LENGTH
+unset PASSWORD_STORE_CHARACTER_SET
+unset PASSWORD_STORE_CHARACTER_SET_NO_SYMBOLS
+unset PASSWORD_STORE_ENABLE_EXTENSIONS
+unset PASSWORD_STORE_EXTENSIONS_DIR
+unset PASSWORD_STORE_SIGNING_KEY
+unset GNUPGHOME
+unset EDITOR
+
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+export PASSWORD_STORE_EXTENSIONS_DIR="$EXT_HOME"
+
+# GnuPG config
+unset GPG_AGENT_INFO
+export GNUPGHOME="$TEST_HOME/gnupg/"
+KEY1="CF90C77B"  # pass test key 1
+chmod 700 "$GNUPGHOME"
+
+test_cleanup() {
+	rm -rf "$TMP"
+	mkdir -p "$TMP"
+}
+
+test_export() {
+	export testname="$1"
+	export PASSWORD_STORE_DIR="$TMP/${testname}-store"
+	export PASSWORD_STORE_CLIP_TIME="1"
+	export PATH="$TEST_HOME:$PATH"
+	export EDITOR="fake-editor"
+	export GIT_DIR="$PASSWORD_STORE_DIR/.git"
+	export GIT_WORK_TREE="$PASSWORD_STORE_DIR"
+	export PWNED_BASE_URL="file:///home/james/projects/pass-pwned/tests/api"
+	git config --global user.email "Pass-Automated-Testing-Suite@zx2c4.com"
+	git config --global user.name "Pass Automated Testing Suite"
+}

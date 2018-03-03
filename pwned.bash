@@ -10,11 +10,11 @@ pwned_password()
 	short_sha1=${sha1:0:5}
 	sha1_suffix=${sha1:5}
 
-	http_response=$(curl -s -w "\nHTTPSTATUS:%{http_code}\n" "https://api.pwnedpasswords.com/range/${short_sha1}")
+	http_response=$(curl -s -w '\nHTTPSTATUS:%{http_code}\n' "${PWNED_BASE_URL}/range/${short_sha1}")
 	http_body="$(echo "$http_response" | sed '$d')"
 	http_status=$(echo "$http_response" | tail -1 | sed -e 's/.*HTTPSTATUS://')
 
-	if [ ! "$http_status" -eq 200 ]; then
+	if ! [[ "${PWNED_BASE_URL}" =~ ^file:// ]] && [ ! "$http_status" -eq 200 ]; then
 	  echo "Error [HTTP status: $http_status]"
 	  return 1
 	fi
@@ -46,7 +46,7 @@ cmd_pwned_check()
 	check_sneaky_paths "$path"
 	[[ ! -f $passfile ]] && die "Error: $path is not in the password store."
 
-		contents=$($GPG -d "${GPG_OPTS[@]}" "$passfile" | head -n 1)
+	contents=$($GPG -d "${GPG_OPTS[@]}" "$passfile" | head -n 1)
 
 	pwned_password "${contents}"
 
@@ -59,6 +59,8 @@ cmd_pwned_check()
 
 }
 
+
+PWNED_BASE_URL="${PWNED_BASE_URL:-https://api.pwnedpasswords.com}"
 case "$1" in
   help|--help|-h)
     shift
