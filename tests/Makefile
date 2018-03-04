@@ -16,5 +16,6 @@ $(TEST_FILES):
 
 clean:
 	@rm -rf test-results
+	@rm -rf /tmp/pass-pwned
 
 .PHONY: all clean test
