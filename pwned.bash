@@ -26,7 +26,7 @@ pwned_password_online()
 pwned_password_data_file()
 {
 	if ! [ -x "$(command -v bsearch)" ]; then
-		echo "ERROR: bsearch is required for data file option, please install bsearch."
+		echo "ERROR: bsearch is required for data file option, please install bsearch. See: https://www.james-ridgway.co.uk/projects/bsearch"
 		exit 1
 	fi
 	local data_file password sha1
