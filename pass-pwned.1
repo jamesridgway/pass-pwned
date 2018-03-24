@@ -20,9 +20,12 @@ is an extension for Password Store that will check a password against Troy Hunt'
 .SH COMMANDS
 
 .TP
-\fBcheck\fP \fIpass-name\fP
+\fBcheck\fP [\fI--file=<filename>\fP, \fI-f <filename>\fP] \fIpass-name\fP
 
-Check the contents of \fIpass-name\fP against pwnedpasswords API. For a multiline passfile the first line will be used. 
+Check the contents of \fIpass-name\fP against pwnedpasswords API, or if \fI--file\fP or \fI-f\fP is specified the provided password hash file will be used instead.
+
+For a multiline passfile only the first line will be checked.
+
 
 .SH SEE ALSO
 .BR pass (1),
