@@ -29,7 +29,7 @@ More information may be found in the pass-pwned(1) man page.
 ```
 
 ### Password Hash Files
-Password hash fils must be sorted by the hash, this is to allow an efficient lookup using [bsearch](https://github.com/jamesridgway/bsearch).
+Password hash fils must be sorted by the hash, this is to allow an efficient lookup using [bsearch](https://www.james-ridgway.co.uk/projects/bsearch).
 
 Hash files should be structured as follows, with a colon (`:`) separating the hash from count.
 ```
