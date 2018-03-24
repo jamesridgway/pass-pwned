@@ -13,19 +13,30 @@ pass pwned is a Password Store extension for checking passwords against the pwne
   Usage:
 
     pass pwned check [-f <filename>] [pass-name]
-        Check the contents of pass-name against pwnedpasswords API. For a
-        multiline passfile only the first line will be checked.
+        Check the contents of pass-name against pwnedpasswords API. For a multiline
+        passfile only the first line will be checked.
 
-        Using the -f or --file flag will use the provided password hash
-        file instead of the pwnedpasswords API.
+        Using the -f or --file flag will use the provided password hash file
+        instead of the pwnedpasswords API.
 
-        If you want to check all of your password store entries, don't
-        provide a pass-name.
+        If you want to check all of your password store entries, don't provide a
+        pass-name.
 
   Options:
-    -f, --file    Provide a password hash file to use instead of the API.
+    -f, --file    Provide a sorted password hash file to use instead of the API.
 
 More information may be found in the pass-pwned(1) man page.
+```
+
+### Password Hash Files
+Password hash fils must be sorted by the hash, this is to allow an efficient lookup using [bsearch](??).
+
+Hash files should be structured as follows, with a colon (`:`) separating the hash from count.
+```
+21BD10E37C7AE489C68833760870331191440428:4
+21BD10E517DD1DBBEBB24B31D69EFCD9AA3565D5:15
+21BD10F212CF1B355E4F388728F61E0C6DE227B8:5
+...
 ```
 
 ## Installation
