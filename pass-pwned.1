@@ -15,7 +15,11 @@ pass-pwned - A \fBpass\fP(1) extension for checking passwords against pwnedpassw
 
 .SH DESCRIPTION
 .B pass-pwned
-is an extension for Password Store that will check a password against Troy Hunt's pwnedpasswords API.
+is an extension for Password Store that will check a password against Troy Hunt's pwnedpasswords API. For a multiline passfile only the first line will be checked.
+
+Using the \fI--file\fP or \fI-f\fP flag will use the provided password hash file instead of the pwnedpasswords API.
+
+If you want to check all of your password store entries, don't provide a pass-name.
 
 .SH COMMANDS
 

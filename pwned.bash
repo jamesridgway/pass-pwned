@@ -44,9 +44,18 @@ $PROGRAM pwned is a Password Store extension for checking passwords against the 
 
   Usage:
 
-    $PROGRAM pwned check [pass-name]
+    $PROGRAM pwned check [-f <filename>] [pass-name]
         Check the contents of pass-name against pwnedpasswords API. For a
-        multiline passfile the first line will be used.
+        multiline passfile only the first line will be checked.
+
+        Using the -f or --file flag will use the provided password hash
+        file instead of the pwnedpasswords API.
+
+        If you want to check all of your password store entries, don't
+        provide a pass-name.
+
+  Options:
+    -f, --file    Provide a password hash file to use instead of the API.
 
 More information may be found in the pass-pwned(1) man page.
 "
