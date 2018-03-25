@@ -1,4 +1,6 @@
 # pass-pwned
+[![Build Status](https://travis-ci.org/jamesridgway/pass-pwned.svg?branch=master)](https://travis-ci.org/jamesridgway/pass-pwned)
+
 A [pass](https://www.passwordstore.org/) extension for checking passwords against [pwnedpasswords](https://www.troyhunt.com/ive-just-launched-pwned-passwords-version-2/) API.
 
 This extension supports checking individual passwords or all passwords against the API.
