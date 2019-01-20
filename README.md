@@ -5,7 +5,7 @@ A [pass](https://www.passwordstore.org/) extension for checking passwords agains
 
 This extension supports checking individual passwords or all passwords against the API.
 
-If you're concerned about using the API, you can provide a pssword hash file to use instead via the `-f` or `--file` option.
+If you're concerned about using the API, you can provide a password hash file to use instead via the `-f` or `--file` option.
 
 
 ## Usage
